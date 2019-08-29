@@ -37,6 +37,7 @@ public class Donation {
     private String zipCode;
 
     @FutureOrPresent
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
 
     @DateTimeFormat
