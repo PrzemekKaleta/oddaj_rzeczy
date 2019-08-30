@@ -63,11 +63,11 @@ public class SimpleAddControler {
 
         donation.setCategories(categoryList);
         donation.setCity("Gliwice" + quantity);
-        donation.setInstitution(institutionRepository.getOne(1L));
+        donation.setInstitution(institutionRepository.getOne(3L));
         donation.setPickUpComment("pic up comment " + quantity);
         donation.setPickUpDate(LocalDate.now());
         donation.setPickUpTime(LocalTime.now());
-        donation.setQuantity(1);
+        donation.setQuantity(3);
         donation.setStreet("gliwicka" + quantity + "/" + quantity*2);
         donation.setZipCode("12-345");
 
