@@ -85,7 +85,7 @@ public class SimpleAddControler {
 
         Institution institution = new Institution();
         institution.setName("institution " + quantity);
-        institution.setDescription("simple descrytion " + quantity);
+        institution.setDescription("simple description " + quantity);
 
         institutionRepository.save(institution);
 

@@ -22,6 +22,8 @@
         <div class="stats--item">
             <em>${quantityOfBags}</em>
 
+
+
             <h3>Oddanych worków</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
                 tempora!</p>
@@ -77,6 +79,7 @@
     </div>
 </section>
 
+<c:if test="${!institutionList.isEmpty()}">
 <section class="help">
     <h2>Komu pomagamy?</h2>
 
@@ -87,40 +90,30 @@
 
         <ul class="help--slides-items">
 
-        <c:forEach items="${institutionList}" var="institution" varStatus="status">
-
-            <c:if test="${(status.index)%2 == 0}">
+        <c:forEach var="count" begin="0" end="${institutionList.size()-1}" step="2">
 
             <li>
                 <div class="col">
-                    <div class="title">Fundacja "${institution.name}"</div>
-                    <div class="subtitle">Cel i misja: ${institution.description}.</div>
+                    <div class="title">Fundacja "${institutionList.get(count).getName()}"</div>
+                    <div class="subtitle">Cel i misja: ${institutionList.get(count).getDescription()}.</div>
                 </div>
-
-                <c:if test="${status.last}">
-                    <div></div>
-                 </li>
-
-                </c:if>
-
-            </c:if>
-
-            <c:if test="${!((status.index)%2 == 0)}">
-
+                <c:if test="${count < ( institutionList.size() - 1)}">
                 <div class="col">
-                    <div class="title">Fundacja "${institution.name}"</div>
-                    <div class="subtitle">Cel i misja: ${institution.description}.</div>
+                    <div class="title">Fundacja "${institutionList.get(count + 1).getName()}"</div>
+                    <div class="subtitle">Cel i misja: ${institutionList.get(count + 1).getDescription()}.</div>
                 </div>
-                </li>
-
-            </c:if>
+                </c:if>
+            </li>
 
         </c:forEach>
+
 
         </ul>
     </div>
 
 </section>
+
+</c:if>
 
 <%@ include file="footer.jsp" %>
 
