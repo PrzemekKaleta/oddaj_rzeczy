@@ -35,4 +35,3 @@
     </div>
 </footer>
 </body>
-<%--<img src="<c:url value="resources/images/about-us.jpg"/>"/>--%>
