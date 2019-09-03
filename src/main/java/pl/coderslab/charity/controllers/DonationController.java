@@ -43,37 +43,16 @@ public class DonationController {
         return "simple-ok";
     }
 
-    @GetMapping("/1")
-    String getStep1(Model model){
-
-        List<String> allNames = categoryRepository.findAllNames();
-       // model.addAttribute("allNames", allNames);
-        model.addAttribute("categories", categoryRepository.findAll());
-
-        return "form-step1";
-    }
-
-    @PostMapping("/2")
-    String postDonation(HttpServletRequest request, Model model){
-
-        String[] categoriesChosen = request.getParameterValues("categories");
-        List<Long> longs = Arrays.stream(categoriesChosen).map(Long::valueOf).collect(Collectors.toList());
-
-        model.addAttribute("idChosen", longs);
-
-        return "form-step2";
-    }
-
-    @ModelAttribute("categories")
+    @ModelAttribute("categoryList")
     public Collection<Category> categories() {
-        List<Category> categories = categoryRepository.findAll();
-        return categories;
+        List<Category> categoryList = categoryRepository.findAll();
+        return categoryList;
     }
 
-    @ModelAttribute("institutions")
-    public Collection<Institution> institutions(){
-        List<Institution> institutions = institutionRepository.findAll();
-        return institutions;
+    @ModelAttribute("institutionsList")
+    public Collection<Institution> institutionsList(){
+        List<Institution> institutionsList = institutionRepository.findAll();
+        return institutionsList;
     }
 
 }

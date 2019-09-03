@@ -13,11 +13,26 @@
 
 <form:form modelAttribute="donation">
 
-    <c:forEach items="${categories}" var="category">
-        <form:checkbox path="categories" value="${category}"/>
+    <c:forEach items="${categoryList}" var="categoryFromList">
+        <form:checkbox path="categories" value="${categoryFromList}"/>${categoryFromList.name}
     </c:forEach>
 
-    <form:input type="number" path="quantity"/>
+    <br>
+    ilość worków: <form:input type="number" path="quantity"/>
+    <br>
+
+
+     <c:forEach items="${institutionsList}" var="institutionFromList">
+        <form:radiobutton path="institution" value="${institutionFromList}"/>${institutionFromList.name}
+     </c:forEach>
+    <br>
+
+    kod pocztowy: <form:input path="zipCode" /><br>
+    ulica: <form:input path="street" /><br>
+    miejscowość: <form:input path="city"/><br>
+    komentarz do dobioru rzeczy: <form:textarea path="pickUpComment"/><br>
+    data: <form:input type="date" path="pickUpDate"/><br>
+    godzina: <form:input type="time" path="pickUpTime" /><br>
 
     <br>
     <input type="submit" value="Dodaj" />
