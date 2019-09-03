@@ -1,5 +1,7 @@
 package pl.coderslab.charity.entity;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -10,6 +12,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 
 @Entity
 public class Donation {
@@ -18,7 +21,7 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Range(min=1, max=100)
+    //@Range(min=1, max=100)
     private int quantity;
 
     @ManyToMany
@@ -27,13 +30,13 @@ public class Donation {
     @ManyToOne
     private Institution institution;
 
-    @NotBlank
+    //@NotBlank
     private String street;
 
-    @NotBlank
+    //@NotBlank
     private String city;
 
-    @NotBlank
+    //@NotBlank
     private String zipCode;
 
     @FutureOrPresent
@@ -123,5 +126,21 @@ public class Donation {
 
     public void setPickUpComment(String pickUpComment) {
         this.pickUpComment = pickUpComment;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Donation.class.getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("quantity=" + quantity)
+                .add("categories=" + categories)
+                .add("institution=" + institution)
+                .add("street='" + street + "'")
+                .add("city='" + city + "'")
+                .add("zipCode='" + zipCode + "'")
+                .add("pickUpDate=" + pickUpDate)
+                .add("pickUpTime=" + pickUpTime)
+                .add("pickUpComment='" + pickUpComment + "'")
+                .toString();
     }
 }
