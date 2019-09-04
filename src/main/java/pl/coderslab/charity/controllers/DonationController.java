@@ -33,7 +33,7 @@ public class DonationController {
     @GetMapping("")
     String getForm(Model model){
         model.addAttribute("donation", new Donation());
-        return "simple-form";
+        return "form";
     }
 
     @PostMapping("")
