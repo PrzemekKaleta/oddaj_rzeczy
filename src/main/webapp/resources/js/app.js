@@ -14,9 +14,15 @@ document.addEventListener("DOMContentLoaded", function() {
       this.createElements();
       this.addEvents();
       this.$el.parentElement.removeChild(this.$el);
+
+
     }
 
+
+
     createElements() {
+
+
       // Input for value
       this.valueInput = document.createElement("input");
       this.valueInput.type = "text";
@@ -95,12 +101,14 @@ document.addEventListener("DOMContentLoaded", function() {
    * Switching between form steps
    */
   class FormSteps {
+
     constructor(form) {
       this.$form = form;
       this.$next = form.querySelectorAll(".next-step");
       this.$prev = form.querySelectorAll(".prev-step");
       this.$step = form.querySelector(".form--steps-counter span");
       this.currentStep = 1;
+
 
       this.$stepInstructions = form.querySelectorAll(".form--steps-instructions p");
       const $stepForms = form.querySelectorAll("form > div");
@@ -115,18 +123,22 @@ document.addEventListener("DOMContentLoaded", function() {
     init() {
       this.events();
       this.updateForm();
+
     }
 
     /**
      * All events that are happening in form
      */
     events() {
+
+
       // Next step
       this.$next.forEach(btn => {
         btn.addEventListener("click", e => {
           e.preventDefault();
           this.currentStep++;
           this.updateForm();
+
         });
       });
 
@@ -163,12 +175,66 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 5;
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
+
       // TODO: get data from inputs and show them in summary
+
+
+        // text information about bags and they content
+
+        var bags = document.getElementById("bags");
+
+        var part = document.getElementById("quantity");
+
+        var step1 = document.getElementById("step-1");
+
+        var chosenCategory = [];
+
+        var allInput = step1.getElementsByTagName('input');
+
+        var allNames = step1.getElementsByClassName('description');
+
+        for (var i = 0; i < allInput.length ; i++){
+
+            if(allInput[i].checked){
+                chosenCategory.push(allNames[i].innerText);
+            }}
+
+        var textbegining;
+
+          if(part.value === 1){
+              textbegining = "1 worek zawierający ";}
+          else if(part.value<5){
+              textbegining = part.value + " woki zawierające ";}
+          else{
+              textbegining = part.value + " worków zawierających ";}
+
+        var textend;
+
+          console.log(chosenCategory.length);
+
+          if(chosenCategory.length === 1){
+            textend = chosenCategory[0]
+          }else if(chosenCategory.length === 2){
+            textend = chosenCategory.join(" oraz ");
+          }else{
+            var firsthalf = chosenCategory.slice(0,(chosenCategory.length-2));
+            var secondhalf = chosenCategory.slice((chosenCategory.length-2),(chosenCategory.length));
+            var textfirsthalf = firsthalf.join(", ");
+            var textsecondhalf = secondhalf.join(" oraz ");
+            textend = textfirsthalf.concat(", ",textsecondhalf);
+          }
+
+        bags.innerText = textbegining.concat(" ", textend);
+
     }
+
 
   }
   const form = document.querySelector(".form--steps");
+    //new
+
   if (form !== null) {
     new FormSteps(form);
   }
+
 });

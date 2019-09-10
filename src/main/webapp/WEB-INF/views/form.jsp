@@ -90,13 +90,12 @@
 
         <form:form action="donation" method="post" modelAttribute="donation">
           <!-- STEP 1: class .active is switching steps -->
-          <div data-step="1" class="active">
+          <div id="step-1" data-step="1" class="active">
             <h3>Zaznacz co chcesz oddać:</h3>
               <c:forEach var="categoryFromList" items="${categoryList}">
                 <div class="form-group form-group--checkbox">
                   <label>
-                    <input
-                            type="checkbox"
+                    <input  type="checkbox"
                             name="categories"
                             value=${categoryFromList.id}
 
@@ -218,7 +217,7 @@
             </div>
             <div class="form-group form-group--buttons">
               <button type="button" class="btn prev-step">Wstecz</button>
-              <button type="button" class="btn next-step">Dalej</button>
+              <button id="lastbutton" type="button" class="btn next-step">Dalej</button>
             </div>
           </div>
 
@@ -232,7 +231,7 @@
                 <ul>
                   <li>
                     <span class="icon icon-bag"></span>
-                    <span class="summary--text"
+                    <span id="bags" class="summary--text"
                       >4 worki ubrań w dobrym stanie dla dzieci</span
                     >
                   </li>
