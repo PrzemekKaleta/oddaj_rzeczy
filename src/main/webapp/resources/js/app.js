@@ -205,8 +205,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
         var streetGiver = document.getElementById("streetGiver");
         var streetTaker = document.getElementById("streetTaker");
-
         streetTaker.innerText = streetGiver.value;
+
+        var cityGiver = document.getElementById("cityGiver");
+        var cityTaker = document.getElementById("cityTaker");
+        cityTaker.innerText = cityGiver.value;
+
+        var zipCodeGiver = document.getElementById("zipCodeGiver");
+        var zipCodeTaker = document.getElementById("zipCodeTaker");
+        zipCodeTaker.innerText = zipCodeGiver.value;
+
+        var pickUpDateGiver = document.getElementById("pickUpDateGiver");
+        var pickUpDateTaker = document.getElementById("pickUpDateTaker");
+        pickUpDateTaker.innerText = pickUpDateGiver.value;
+
+        var pickUpTimeGiver = document.getElementById("pickUpTimeGiver");
+        var pickUpTimeTaker = document.getElementById("pickUpTimeTaker");
+        pickUpTimeTaker.innerText = pickUpTimeGiver.value;
+
+        var pickUpCommentGiver = document.getElementById("pickUpCommentGiver");
+        var pickUpCommentTaker = document.getElementById("pickUpCommentTaker");
+
+        if(pickUpCommentGiver.innerText ===""){
+            pickUpCommentTaker.innerText = "brak uwagi";
+        }else{
+            pickUpCommentTaker.innerText = pickUpCommentGiver.value;
+        };
 
 
         // var addressTaker = document.getElementById("address");

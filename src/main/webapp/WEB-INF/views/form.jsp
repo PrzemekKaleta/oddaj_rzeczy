@@ -171,14 +171,14 @@
                 </div>
 
                 <div class="form-group form-group--inline">
-                  <label> Miasto <form:input type="text" path="city"/>
+                  <label> Miasto <form:input id="cityGiver" type="text" path="city"/>
                     <%--<input type="text" name="city" />--%>
                   </label>
                 </div>
 
                 <div class="form-group form-group--inline">
                   <label>
-                    Kod pocztowy <form:input path="zipCode" type="text"/>
+                    Kod pocztowy <form:input id="zipCodeGiver" path="zipCode" type="text"/>
                     <%--<input type="text" name="postcode" />--%>
                   </label>
                 </div>
@@ -194,14 +194,14 @@
                 <h4>Termin odbioru</h4>
                 <div class="form-group form-group--inline">
                   <label> Data
-                    <form:input type="date" path="pickUpDate"/>
+                    <form:input id="pickUpDateGiver" type="date" path="pickUpDate"/>
                     <%--<input type="date" name="data" />--%>
                   </label>
                 </div>
 
                 <div class="form-group form-group--inline">
                   <label> Godzina
-                    <form:input type="time" path="pickUpTime" />
+                    <form:input id="pickUpTimeGiver" type="time" path="pickUpTime" />
                     <%--<input type="time" name="time" />--%>
                   </label>
                 </div>
@@ -209,7 +209,7 @@
                 <div class="form-group form-group--inline">
                   <label>
                     Uwagi dla kuriera
-                    <form:textarea path="pickUpComment" rows="5"/>
+                    <form:textarea id="pickUpComment" path="pickUpComment" rows="5"/>
                     <%--<textarea name="more_info" rows="5"></textarea>--%>
                   </label>
                 </div>
@@ -248,19 +248,19 @@
               <div class="form-section form-section--columns">
                 <div class="form-section--column">
                   <h4>Adres odbioru:</h4>
-                  <ul id="addressTaker">
+                  <ul>
                     <li id="streetTaker">street</li>
-                    <li id="citySummary">city</li>
-                    <li id="zipCodeSummary">zip code</li>
+                    <li id="cityTaker">city</li>
+                    <li id="zipCodeTaker">zip code</li>
                   </ul>
                 </div>
 
                 <div class="form-section--column">
                   <h4>Termin odbioru:</h4>
-                  <ul id="pickUpTaker">
-                    <li id="pickUpDateSummary">dd/mm/yyyy</li>
-                    <li id="pickUpTimeSummary">HH:mm</li>
-                    <li id="picUpCommentSummary">Brak uwag</li>
+                  <ul>
+                    <li id="pickUpDateTaker">dd/mm/yyyy</li>
+                    <li id="pickUpTimeTaker">HH:mm</li>
+                    <li id="picUpCommentTaker">Brak uwag</li>
                   </ul>
                 </div>
               </div>
