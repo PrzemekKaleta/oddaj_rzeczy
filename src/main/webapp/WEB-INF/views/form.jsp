@@ -157,7 +157,7 @@
           </div>
 
           <!-- STEP 5 -->
-          <div data-step="4">
+          <div id="step-4" data-step="4">
             <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
 
             <div class="form-section form-section--columns">
@@ -166,7 +166,7 @@
                 <div class="form-group form-group--inline">
                   <label>
                     <%--Ulica <input type="text" name="address" />--%>
-                    Ulica <form:input type="text" path="street" />
+                    Ulica <form:input id="streetGiver" type="text" path="street" />
                   </label>
                 </div>
 
@@ -248,20 +248,19 @@
               <div class="form-section form-section--columns">
                 <div class="form-section--column">
                   <h4>Adres odbioru:</h4>
-                  <ul>
-                    <li>Prosta 51</li>
-                    <li>Warszawa</li>
-                    <li>99-098</li>
-                    <li>123 456 789</li>
+                  <ul id="addressTaker">
+                    <li id="streetTaker">street</li>
+                    <li id="citySummary">city</li>
+                    <li id="zipCodeSummary">zip code</li>
                   </ul>
                 </div>
 
                 <div class="form-section--column">
                   <h4>Termin odbioru:</h4>
-                  <ul>
-                    <li>13/12/2018</li>
-                    <li>15:40</li>
-                    <li>Brak uwag</li>
+                  <ul id="pickUpTaker">
+                    <li id="pickUpDateSummary">dd/mm/yyyy</li>
+                    <li id="pickUpTimeSummary">HH:mm</li>
+                    <li id="picUpCommentSummary">Brak uwag</li>
                   </ul>
                 </div>
               </div>

@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function() {
       // TODO: get data from inputs and show them in summary
 
 
-        // TODO: take information about institution
+        // taking information about institution
 
         var step3 = document.getElementById("step-3");
 
@@ -202,6 +202,49 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         // TODO: take information about address
+
+        var streetGiver = document.getElementById("streetGiver");
+        var streetTaker = document.getElementById("streetTaker");
+
+        streetTaker.innerText = streetGiver.value;
+
+
+        // var addressTaker = document.getElementById("address");
+        // var pickUpTaker = document.getElementById("pickUp");
+        //
+        // var allAddressTakerChilds = addressTaker.children;
+        // var allpickUpTakerChilds = pickUpTaker.children;
+        //
+        // var addressGiver = document.getElementById("step-4");
+        // var allAddressGiverInputs = addressGiver.getElementsByClassName("form-group--inline");
+        //
+        //
+        // for(var i = 0 ; i < allAddressTakerChilds.length ; i++){
+        //     allAddressTakerChilds[i].innerText = allAddressGiverInputs[i].innerText;
+        // }
+        //
+        // allAddressTakerChilds[1].innerHTML = "oooo";
+        // var street = address.
+        //
+        // var summaryStreet = document.getElementById("streetSummary");
+        // summaryStreet.innerText = document.getElementById("street");
+
+/*
+    <li id="streetSummary">street</li>
+            <li id="citySummary">city</li>
+            <li id="zipCodeSummary">zip code</li>
+        </ul>
+        </div>
+
+        <div class="form-section--column">
+            <h4>Termin odbioru:</h4>
+        <ul>
+        <li id="pickUpDateSummary">dd/mm/yyyy</li>
+            <li id="pickUpTimeSummary">HH:mm</li>
+        <li id="picUpCommentSummary">Brak uwag</li>*/
+
+
+
 
         // TODO: take informaion about date and time of pickup
 
