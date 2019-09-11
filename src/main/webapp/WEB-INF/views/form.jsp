@@ -131,7 +131,7 @@
 
 
           <!-- STEP 4 -->
-          <div data-step="3">
+          <div id="step-3" data-step="3">
             <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
             <c:forEach items="${institutionsList}" var="institutionFromList">
@@ -238,7 +238,7 @@
 
                   <li>
                     <span class="icon icon-hand"></span>
-                    <span class="summary--text"
+                    <span id="institution" class="summary--text"
                       >Dla fundacji "Mam marzenie" w Warszawie</span
                     >
                   </li>

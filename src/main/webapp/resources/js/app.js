@@ -179,6 +179,33 @@ document.addEventListener("DOMContentLoaded", function() {
       // TODO: get data from inputs and show them in summary
 
 
+        // TODO: take information about institution
+
+        var step3 = document.getElementById("step-3");
+
+        var allRadio = step3.getElementsByTagName('input');
+
+        var allRadioNames = step3.getElementsByClassName('title');
+
+        var chosenInstitution;
+
+        for (var i = 0; i < allRadio.length ; i++){
+
+            if(allRadio[i].checked){
+                chosenInstitution = allRadioNames[i].innerText;
+                break;
+            }};
+
+        var institution = document.getElementById("institution");
+
+        institution.innerText = chosenInstitution.replace('Fundacja', 'Dla fundacji');
+
+
+        // TODO: take information about address
+
+        // TODO: take informaion about date and time of pickup
+
+
         // text information about bags and they content
 
         var bags = document.getElementById("bags");
@@ -191,12 +218,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
         var allInput = step1.getElementsByTagName('input');
 
-        var allNames = step1.getElementsByClassName('description');
+        var allCheckboxNames = step1.getElementsByClassName('description');
 
         for (var i = 0; i < allInput.length ; i++){
 
             if(allInput[i].checked){
-                chosenCategory.push(allNames[i].innerText);
+                chosenCategory.push(allCheckboxNames[i].innerText);
             }}
 
         var textbegining;
@@ -204,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function() {
           if(part.value === 1){
               textbegining = "1 worek zawierający ";}
           else if(part.value<5){
-              textbegining = part.value + " woki zawierające ";}
+              textbegining = part.value + " worki zawierające ";}
           else{
               textbegining = part.value + " worków zawierających ";}
 
