@@ -209,7 +209,7 @@
                 <div class="form-group form-group--inline">
                   <label>
                     Uwagi dla kuriera
-                    <form:textarea id="pickUpComment" path="pickUpComment" rows="5"/>
+                    <form:textarea id="pickUpCommentGiver" path="pickUpComment" rows="5"/>
                     <%--<textarea name="more_info" rows="5"></textarea>--%>
                   </label>
                 </div>
@@ -260,7 +260,7 @@
                   <ul>
                     <li id="pickUpDateTaker">dd/mm/yyyy</li>
                     <li id="pickUpTimeTaker">HH:mm</li>
-                    <li id="picUpCommentTaker">Brak uwag</li>
+                    <li id="pickUpCommentTaker">Brak uwag</li>
                   </ul>
                 </div>
               </div>

@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function() {
         institution.innerText = chosenInstitution.replace('Fundacja', 'Dla fundacji');
 
 
-        // TODO: take information about address
+        // taked information about address and pick up
 
         var streetGiver = document.getElementById("streetGiver");
         var streetTaker = document.getElementById("streetTaker");
@@ -226,48 +226,11 @@ document.addEventListener("DOMContentLoaded", function() {
         var pickUpCommentGiver = document.getElementById("pickUpCommentGiver");
         var pickUpCommentTaker = document.getElementById("pickUpCommentTaker");
 
-        if(pickUpCommentGiver.innerText ===""){
-            pickUpCommentTaker.innerText = "brak uwagi";
+        if(pickUpCommentGiver.value === ""){
+            pickUpCommentTaker.innerText = "brak uwag do odbioru";
         }else{
             pickUpCommentTaker.innerText = pickUpCommentGiver.value;
         };
-
-
-        // var addressTaker = document.getElementById("address");
-        // var pickUpTaker = document.getElementById("pickUp");
-        //
-        // var allAddressTakerChilds = addressTaker.children;
-        // var allpickUpTakerChilds = pickUpTaker.children;
-        //
-        // var addressGiver = document.getElementById("step-4");
-        // var allAddressGiverInputs = addressGiver.getElementsByClassName("form-group--inline");
-        //
-        //
-        // for(var i = 0 ; i < allAddressTakerChilds.length ; i++){
-        //     allAddressTakerChilds[i].innerText = allAddressGiverInputs[i].innerText;
-        // }
-        //
-        // allAddressTakerChilds[1].innerHTML = "oooo";
-        // var street = address.
-        //
-        // var summaryStreet = document.getElementById("streetSummary");
-        // summaryStreet.innerText = document.getElementById("street");
-
-/*
-    <li id="streetSummary">street</li>
-            <li id="citySummary">city</li>
-            <li id="zipCodeSummary">zip code</li>
-        </ul>
-        </div>
-
-        <div class="form-section--column">
-            <h4>Termin odbioru:</h4>
-        <ul>
-        <li id="pickUpDateSummary">dd/mm/yyyy</li>
-            <li id="pickUpTimeSummary">HH:mm</li>
-        <li id="picUpCommentSummary">Brak uwag</li>*/
-
-
 
 
         // TODO: take informaion about date and time of pickup
