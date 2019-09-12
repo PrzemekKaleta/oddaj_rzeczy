@@ -176,10 +176,7 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
 
-      // TODO: get data from inputs and show them in summary
-
-
-        // taking information about institution
+      // taking information about institution
 
         var step3 = document.getElementById("step-3");
 
@@ -201,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function() {
         institution.innerText = chosenInstitution.replace('Fundacja', 'Dla fundacji');
 
 
-        // taked information about address and pick up
+        // taking information about address and pick up
 
         var streetGiver = document.getElementById("streetGiver");
         var streetTaker = document.getElementById("streetTaker");
@@ -231,9 +228,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }else{
             pickUpCommentTaker.innerText = pickUpCommentGiver.value;
         };
-
-
-        // TODO: take informaion about date and time of pickup
 
 
         // text information about bags and they content

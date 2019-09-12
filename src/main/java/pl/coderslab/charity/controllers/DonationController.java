@@ -9,12 +9,8 @@ import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.repository.CategoryRepository;
 import pl.coderslab.charity.repository.DonationRepository;
 import pl.coderslab.charity.repository.InstitutionRepository;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/donation")
