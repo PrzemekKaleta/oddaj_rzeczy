@@ -119,6 +119,7 @@
               <label>
                 Liczba 60l worków:
                 <form:input type="number" path="quantity" step="1" min="1" max="100"/>
+                <form:errors path="quantity"/><br>
               </label>
             </div>
 
@@ -234,6 +235,7 @@
                     <span id="bags" class="summary--text"
                       >4 worki ubrań w dobrym stanie dla dzieci</span
                     >
+                    <form:errors path="quantity"/><br>
                   </li>
 
                   <li>

@@ -2,6 +2,7 @@ package pl.coderslab.charity.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entity.Category;
 import pl.coderslab.charity.entity.Donation;
@@ -9,6 +10,8 @@ import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.repository.CategoryRepository;
 import pl.coderslab.charity.repository.DonationRepository;
 import pl.coderslab.charity.repository.InstitutionRepository;
+
+import javax.validation.Valid;
 import java.util.Collection;
 import java.util.List;
 
@@ -33,7 +36,10 @@ public class DonationController {
     }
 
     @PostMapping("")
-    String postForm(@ModelAttribute Donation donation, Model model){
+    String postForm(@ModelAttribute ("donation") @Valid Donation donation, BindingResult result, Model model){
+        if(result.hasErrors()){
+            return "form";
+        }
         donationRepository.save(donation);
         model.addAttribute("message", donation.toString());
         return "simple-ok";

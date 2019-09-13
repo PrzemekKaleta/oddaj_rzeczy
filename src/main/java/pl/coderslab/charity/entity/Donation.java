@@ -25,7 +25,7 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //@Range(min=1, max=100)
+    @Range(min=1, max=100, message="Wartość od 1 do 100")
     private int quantity;
 
     @ManyToMany
