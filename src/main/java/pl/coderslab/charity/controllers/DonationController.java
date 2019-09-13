@@ -36,13 +36,12 @@ public class DonationController {
     }
 
     @PostMapping("")
-    String postForm(@ModelAttribute ("donation") @Valid Donation donation, BindingResult result, Model model){
+    String postForm(@ModelAttribute ("donation") @Valid Donation donation, BindingResult result){
         if(result.hasErrors()){
             return "form";
         }
         donationRepository.save(donation);
-        model.addAttribute("message", donation.toString());
-        return "simple-ok";
+        return "form-confirmation";
     }
 
     @ModelAttribute("categoryList")

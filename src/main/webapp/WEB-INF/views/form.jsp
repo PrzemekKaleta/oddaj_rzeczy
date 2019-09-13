@@ -232,10 +232,8 @@
                 <ul>
                   <li>
                     <span class="icon icon-bag"></span>
-                    <span id="bags" class="summary--text"
-                      >4 worki ubrań w dobrym stanie dla dzieci</span
-                    >
-                    <form:errors path="quantity"/><br>
+                    <span id="bags" class="summary--text">4 worki ubrań w dobrym stanie dla dzieci</span>
+                    <form:errors path="*"/><br>
                   </li>
 
                   <li>
