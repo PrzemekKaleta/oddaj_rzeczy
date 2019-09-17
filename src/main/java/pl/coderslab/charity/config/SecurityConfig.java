@@ -6,17 +6,29 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+
+    @Autowired
+    private DataSource dataSource;
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder authenticationMgr) throws Exception {
-        authenticationMgr.inMemoryAuthentication()
+
+        authenticationMgr.jdbcAuthentication().dataSource(dataSource)
+                .passwordEncoder(new BCryptPasswordEncoder())
+                .usersByUsernameQuery("select email, password, enabled from user where username=?")
+                .authoritiesByUsernameQuery("select email, authority from user_authorities where username=?");
+/*        authenticationMgr.inMemoryAuthentication()
                 .withUser("devuser").password("{noop}dev").authorities("ROLE_USER")
                 .and()
-                .withUser("adminuser").password("{noop}admin").authorities("ROLE_USER", "ROLE_ADMIN");
+                .withUser("adminuser").password("{noop}admin").authorities("ROLE_USER", "ROLE_ADMIN");*/
     }
 
     @Override
