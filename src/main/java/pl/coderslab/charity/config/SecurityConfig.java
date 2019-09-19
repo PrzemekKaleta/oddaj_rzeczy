@@ -22,9 +22,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder authenticationMgr) throws Exception {
 
         authenticationMgr.jdbcAuthentication().dataSource(dataSource)
-                .passwordEncoder(new BCryptPasswordEncoder())
-                .usersByUsernameQuery("select email, password, enabled from user where username=?")
-                .authoritiesByUsernameQuery("select email, authority from user_authorities where username=?");
+                .passwordEncoder(new BCryptPasswordEncoder());
+//                .usersByUsernameQuery("select email, password, enabled from user where username=?")
+//                .authoritiesByUsernameQuery("select email, authority from user_authorities where username=?");
 /*        authenticationMgr.inMemoryAuthentication()
                 .withUser("devuser").password("{noop}dev").authorities("ROLE_USER")
                 .and()
