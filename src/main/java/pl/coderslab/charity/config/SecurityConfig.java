@@ -17,19 +17,27 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
+
     @Bean
     public UserDetailsService userDetailsService() {
         return new MyUserDetailsService();
-    };
+    }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    };
+    }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
     }
 
 //    @Autowired
@@ -49,17 +57,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .withUser("adminuser").password("{noop}admin").authorities("ROLE_USER", "ROLE_ADMIN");*/
 
-
-    @Override
-    protected void configure(HttpSecurity http)throws Exception{
-        http
-                .authorizeRequests()
-                .antMatchers("/donation*").hasRole("USER")
-                .antMatchers("/admin*").hasRole("ADMIN")
-                .antMatchers("/").permitAll()
-                .and()
-                .httpBasic();
-
-    }
+//    @Override
+//    protected void configure(HttpSecurity http)throws Exception{
+//        http
+//                .authorizeRequests()
+//                .antMatchers("/donation*").hasRole("USER")
+//                .antMatchers("/admin*").hasRole("ADMIN")
+//                .antMatchers("/").permitAll()
+//                .and()
+//                .httpBasic();
+//
+//    }
 
 }
