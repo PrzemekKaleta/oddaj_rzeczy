@@ -6,22 +6,22 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import pl.coderslab.charity.entity.User;
-
 import java.util.Collection;
 import java.util.stream.Collectors;
 
 @Getter
 @Setter
-
 public class CustomUserDetails implements UserDetails {
 
     private User user;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return user.getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role))
+
+        return user.getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRole()))
                 .collect(Collectors.toList());
     }
+
 
     @Override
     public String getPassword() {
@@ -52,4 +52,5 @@ public class CustomUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

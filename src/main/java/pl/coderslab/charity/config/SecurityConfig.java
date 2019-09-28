@@ -30,17 +30,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/").permitAll()
+                .authorizeRequests().antMatchers("/", "/resources/**").permitAll().anyRequest().permitAll()
                 .and()
                 .authorizeRequests()
                 .antMatchers("/admin").authenticated().anyRequest().hasAnyRole("ADMIN")
-                .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll();
 
-        http.authorizeRequests().antMatchers("/resources/**").permitAll().anyRequest().permitAll();
-    }
+       }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -51,6 +48,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public UserDetailsService userDetailsService() {
         return new CustomUserDetailsService();
     }
-
 
 }

@@ -2,8 +2,6 @@ package pl.coderslab.charity.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.NotBlank;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,7 +13,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long user_id;
-
 
     @Column(nullable = false, unique = true)
     private String username;
