@@ -30,14 +30,32 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeRequests().antMatchers("/", "/resources/**").permitAll().anyRequest().permitAll()
-                .and()
                 .authorizeRequests()
-                .antMatchers("/admin").authenticated().anyRequest().hasAnyRole("ADMIN")
-                .and()
+                    .antMatchers("/", "/resources/**")
+                    .permitAll()
+//                    .anyRequest()
+//                    .permitAll()
+                    .and()
+                .authorizeRequests()
+                    .antMatchers("/admin")
+                    .authenticated()
+                    .anyRequest()
+                    .hasAnyRole("ADMIN")
+                    .and()
+                .authorizeRequests()
+                    .antMatchers("/user")
+                    .authenticated()
+                    .anyRequest()
+                    .hasAnyRole("USER")
+                    .and()
+                .authorizeRequests()
+                    .antMatchers("/all","/all2")
+                    .permitAll()
+                    .anyRequest().authenticated()
+                    .and()
                 .formLogin().permitAll();
 
-       }
+    }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
