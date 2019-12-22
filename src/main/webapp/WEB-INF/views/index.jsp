@@ -16,16 +16,15 @@
 </head>
 <body>
 
-<%@ include file="header-nonloged.jsp" %>
-
-<%--TODO--%>
 <sec:authorize var="loggedIn" access="isAuthenticated()" />
 <c:choose>
     <c:when test="${loggedIn}">
         You are logged in
+        <%@ include file="header-loged.jsp" %>
     </c:when>
     <c:otherwise>
         You are logged out
+        <%@ include file="header-nonloged.jsp" %>
     </c:otherwise>
 </c:choose>
 

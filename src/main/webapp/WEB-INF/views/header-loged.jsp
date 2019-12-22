@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -12,11 +13,13 @@
     <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
 </head>
 <body>
-<header class="header--form-page">
+<%--<header class="header--form-page">--%>
     <nav class="container container--70">
         <ul class="nav--actions">
             <li class="logged-user">
-                Witaj ${name_from_address}
+                <sec:authentication var="principal" property="principal" />
+
+                Witaj ${principal.username}
                 <ul class="dropdown">
                     <li><a href="#">Profil</a></li>
                     <li><a href="#">Ustawienia</a></li>
@@ -34,6 +37,7 @@
             <li><a href="index.html#contact" class="btn btn--without-border">Kontakt</a></li>
         </ul>
     </nav>
+
 
    <%-- <div class="slogan container container--90">
         <div class="slogan--item">
@@ -61,5 +65,5 @@
             </div>
         </div>
     </div>--%>
-</header>
+<%--</header>--%>
 </body>

@@ -10,10 +10,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="resources/css/style.css" />
+    <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
   </head>
   <body>
-    <header class="header--form-page">
+
+
+  <header class="header--form-page">
+    <%@ include file="header-loged.jsp" %>
+
+
+
+
+<%--    <header class="header--form-page">
       <nav class="container container--70">
         <ul class="nav--actions">
           <li class="logged-user">
@@ -34,7 +42,7 @@
           <li><a href="index.html#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
           <li><a href="index.html#contact" class="btn btn--without-border">Kontakt</a></li>
         </ul>
-      </nav>
+      </nav>--%>
 
       <div class="slogan container container--90">
         <div class="slogan--item">
