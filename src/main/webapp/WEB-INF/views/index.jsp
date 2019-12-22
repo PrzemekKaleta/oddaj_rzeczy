@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -15,7 +16,18 @@
 </head>
 <body>
 
-<%@ include file="header.jsp" %>
+<%@ include file="header-nonloged.jsp" %>
+
+<%--TODO--%>
+<sec:authorize var="loggedIn" access="isAuthenticated()" />
+<c:choose>
+    <c:when test="${loggedIn}">
+        You are logged in
+    </c:when>
+    <c:otherwise>
+        You are logged out
+    </c:otherwise>
+</c:choose>
 
 <section class="stats">
     <div class="container container--85">
