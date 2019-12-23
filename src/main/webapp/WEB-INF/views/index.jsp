@@ -15,18 +15,28 @@
     <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
 </head>
 <body>
+<header class="header--main-page">
 
-<sec:authorize var="loggedIn" access="isAuthenticated()" />
-<c:choose>
-    <c:when test="${loggedIn}">
-        You are logged in
-        <%@ include file="header-loged.jsp" %>
-    </c:when>
-    <c:otherwise>
-        You are logged out
-        <%@ include file="header-nonloged.jsp" %>
-    </c:otherwise>
-</c:choose>
+
+    <sec:authorize var="loggedIn" access="isAuthenticated()" />
+    <c:choose>
+        <c:when test="${loggedIn}">
+            <%@ include file="header-loged.jsp" %>
+        </c:when>
+        <c:otherwise>
+            <%@ include file="header-nonloged.jsp" %>
+        </c:otherwise>
+    </c:choose>
+
+    <div class="slogan container container--90">
+        <div class="slogan--item">
+            <h1>
+                Zacznij pomagać!<br />
+                Oddaj niechciane rzeczy w zaufane ręce
+            </h1>
+        </div>
+    </div>
+</header>
 
 <section class="stats">
     <div class="container container--85">
