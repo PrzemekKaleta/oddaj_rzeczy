@@ -16,7 +16,7 @@
         <ul class="nav--actions">
             <li class="logged-user">
 
-                <c:param name="user_name" value="loged_name">
+/*                <c:param name="user_name" value="loged_name">
                    Witoj ${loged_name}
                 </c:param>
 <%--                <c:forEach items="${allComments}" var="simpleComment">
@@ -28,7 +28,7 @@
                 </c:forEach>--%>
 
 
-                Witaj A
+                Witaj A*/
                 <ul class="dropdown">
                     <li><a href="#">Profil</a></li>
                     <li><a href="#">Moje zbiórki</a></li>
