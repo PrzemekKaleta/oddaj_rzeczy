@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -16,7 +18,7 @@
 
 <section class="login-page">
     <h2>Załóż konto</h2>
-    <form>
+    <form name="f" th:action="@{/register}" method="post">
         <div class="form-group">
             <input type="email" name="email" placeholder="Email" />
         </div>
@@ -24,7 +26,7 @@
             <input type="password" name="password" placeholder="Hasło" />
         </div>
         <div class="form-group">
-            <input type="password" name="password2" placeholder="Powtórz hasło" />
+            <input type="password" name="matchingPassword" placeholder="Powtórz hasło" />
         </div>
 
         <div class="form-group form-group--buttons">
