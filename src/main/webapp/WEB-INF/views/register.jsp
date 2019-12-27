@@ -17,10 +17,24 @@
 </header>
 
 <section class="login-page">
+
+<%--    <form:form method="POST" modelAttribute="guest">
+
+        E-mail: <form:input path="email"/><br>
+        <form:errors path="email" cssClass="error"/><br>
+        Hasło: <form:password path="password"/><br>
+        <form:errors path="password" cssClass="error"/><br>
+        Imie: <form:input path="name"/><br>
+        <form:errors path="name" cssClass="error"/><br>
+        Nazwisko: <form:input path="surname"/><br>
+        <form:errors path="surname" cssClass="error"/><br>
+        <input type="submit" value="Zarejestruj">
+    </form:form>--%>
+
     <h2>Załóż konto</h2>
-    <form name="f" th:action="@{/register}" method="post">
+    <form name="f" th:object="${user}" th:action="@{/register}" method="post">
         <div class="form-group">
-            <input type="email" name="email" placeholder="Email" />
+            <input type="email" name="username" placeholder="Email" />
         </div>
         <div class="form-group">
             <input type="password" name="password" placeholder="Hasło" />
