@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -32,7 +32,8 @@
     </form:form>--%>
 
     <h2>Załóż konto</h2>
-    <form name="f" th:object="${user}" th:action="@{/register}" method="post">
+    <form name="f" form:object="${user}" form:action="@{/register}" method="post">
+        <form:errors path="password" cssClass="error"/>
         <div class="form-group">
             <input type="email" name="username" placeholder="Email" />
         </div>

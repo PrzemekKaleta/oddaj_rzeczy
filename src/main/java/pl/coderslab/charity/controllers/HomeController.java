@@ -60,12 +60,16 @@ public class HomeController {
     }
 
     @PostMapping("register")
-    public String register(@Valid UserDTO userDTO, BindingResult result){
+    public String register(@Valid UserDTO userDTO, BindingResult result, Model model){
 
         if(result.hasErrors()){
+            System.out.println("not pass");
+            model.addAttribute("errors", result);
             return "register";
         }
-        System.out.println("ok zarejestrowano");
+
+
+        System.out.println("pass");
 
         return "redirect:/";
 
