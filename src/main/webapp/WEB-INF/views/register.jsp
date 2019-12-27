@@ -18,37 +18,44 @@
 
 <section class="login-page">
 
-<%--    <form:form method="POST" modelAttribute="guest">
-
+<%--    <form:form method="POST" modelAttribute="user">
         E-mail: <form:input path="email"/><br>
         <form:errors path="email" cssClass="error"/><br>
         Hasło: <form:password path="password"/><br>
         <form:errors path="password" cssClass="error"/><br>
-        Imie: <form:input path="name"/><br>
-        <form:errors path="name" cssClass="error"/><br>
-        Nazwisko: <form:input path="surname"/><br>
-        <form:errors path="surname" cssClass="error"/><br>
+        Imie: <form:input path="firstName"/><br>
+        <form:errors path="firstName" cssClass="error"/><br>
+        Nazwisko: <form:input path="lastName"/><br>
+        <form:errors path="lastName" cssClass="error"/><br>
         <input type="submit" value="Zarejestruj">
     </form:form>--%>
 
     <h2>Załóż konto</h2>
-    <form name="f" form:object="${user}" form:action="@{/register}" method="post">
-        <form:errors path="password" cssClass="error"/>
+    <form:form method="POST" modelAttribute="userDTO">
+
         <div class="form-group">
-            <input type="email" name="username" placeholder="Email" />
+            <form:input path="username" type="email" placeholder="Email" />
+            <form:errors class="validation" path="username"/>
+
         </div>
         <div class="form-group">
-            <input type="password" name="password" placeholder="Hasło" />
+            <form:input path="password" type="password" placeholder="Hasło" />
+            <form:errors class="validation" path="password"/>
+
+
         </div>
         <div class="form-group">
-            <input type="password" name="matchingPassword" placeholder="Powtórz hasło" />
+            <form:input path="matchingPassword" type="password" placeholder="Powtórz hasło" />
+            <form:errors class="validation" path="matchingPassword"/>
+
         </div>
 
         <div class="form-group form-group--buttons">
             <a href="login.html" class="btn btn--without-border">Zaloguj się</a>
             <button class="btn" type="submit">Załóż konto</button>
         </div>
-    </form>
+    </form:form>
+
 </section>
 
     <%@ include file="footer.jsp" %>

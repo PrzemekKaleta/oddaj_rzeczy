@@ -6,6 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,10 +55,24 @@ public class HomeController {
     @GetMapping("/register")
     public String registerForm(WebRequest request, Model model){
         UserDTO userDTO = new UserDTO();
-        model.addAttribute("user", userDTO);
+        model.addAttribute("userDTO", userDTO);
 
         return "register";
     }
+
+
+/*    @PostMapping("/register")
+    public String register(@Valid User user, BindingResult result){
+        if (result.hasErrors()){
+            return "user/form";
+            //jezęli ma błędy to wraca do formularza
+        }
+
+        if(userRepository.existsUserByEmail(user.email)){
+            result.addError(new FieldError("user", "email", "email już jest zajęty"));
+            return "user/form";
+        }*/
+
 
     @PostMapping("register")
     public String register(@Valid UserDTO userDTO, BindingResult result, Model model){
@@ -65,6 +80,13 @@ public class HomeController {
         if(result.hasErrors()){
             System.out.println("not pass");
             model.addAttribute("errors", result);
+            return "register";
+        }
+
+        if(!userDTO.getPassword().equals(userDTO.getMatchingPassword())){
+            System.out.println("not the same password");
+            result.addError(new FieldError("userDTO", "matchingPassword", "źle powtórzone hasło"));
+            //model.addAttribute("errors", result);
             return "register";
         }
 
