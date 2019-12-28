@@ -13,12 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.WebRequest;
 import pl.coderslab.charity.dto.UserDTO;
 import pl.coderslab.charity.entity.Institution;
+import pl.coderslab.charity.entity.Role;
+import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.repository.DonationRepository;
 import pl.coderslab.charity.repository.InstitutionRepository;
+import pl.coderslab.charity.repository.RoleRepository;
 import pl.coderslab.charity.repository.UserRepository;
 
 import javax.validation.Valid;
-import java.util.List;
+import java.util.*;
 
 
 @Controller
@@ -27,11 +30,13 @@ public class HomeController {
     private final InstitutionRepository institutionRepository;
     private final DonationRepository donationRepository;
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
-    public HomeController(InstitutionRepository institutionRepository, DonationRepository donationRepository, UserRepository userRepository) {
+    public HomeController(InstitutionRepository institutionRepository, DonationRepository donationRepository, UserRepository userRepository, RoleRepository roleRepository) {
         this.institutionRepository = institutionRepository;
         this.donationRepository = donationRepository;
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
 
     @RequestMapping("/")
@@ -84,6 +89,32 @@ public class HomeController {
             return "register";
         }
 
+        System.out.println("before save user");
+
+        User user = new User();
+        user.setPassword(userDTO.getPassword());
+        user.setUsername(userDTO.getUsername());
+
+        Role roleUser = roleRepository.findByRole("ROLE_USER");
+
+        Set<Role> roles = new HashSet<Role>();
+        roles.add(roleUser);
+        user.setRoles(roles);
+
+        userRepository.save(user);
+
+        System.out.println("after save user");
+
+    /*    Role role = new Role(REFERRING_PHYSICIAN);
+        Set<Role> roles = new HashSet<Role>();
+        roles.add(role);*/
+
+
+
+
+/*
+        user.setRoles(Arrays.asList("ROLE_USER"));
+        return repository.save(user);*/
 
         System.out.println("pass");
 
