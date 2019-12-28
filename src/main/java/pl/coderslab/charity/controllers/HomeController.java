@@ -15,6 +15,7 @@ import pl.coderslab.charity.dto.UserDTO;
 import pl.coderslab.charity.entity.Institution;
 import pl.coderslab.charity.repository.DonationRepository;
 import pl.coderslab.charity.repository.InstitutionRepository;
+import pl.coderslab.charity.repository.UserRepository;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -25,10 +26,12 @@ public class HomeController {
 
     private final InstitutionRepository institutionRepository;
     private final DonationRepository donationRepository;
+    private final UserRepository userRepository;
 
-    public HomeController(InstitutionRepository institutionRepository, DonationRepository donationRepository) {
+    public HomeController(InstitutionRepository institutionRepository, DonationRepository donationRepository, UserRepository userRepository) {
         this.institutionRepository = institutionRepository;
         this.donationRepository = donationRepository;
+        this.userRepository = userRepository;
     }
 
     @RequestMapping("/")
@@ -60,20 +63,6 @@ public class HomeController {
         return "register";
     }
 
-
-/*    @PostMapping("/register")
-    public String register(@Valid User user, BindingResult result){
-        if (result.hasErrors()){
-            return "user/form";
-            //jezęli ma błędy to wraca do formularza
-        }
-
-        if(userRepository.existsUserByEmail(user.email)){
-            result.addError(new FieldError("user", "email", "email już jest zajęty"));
-            return "user/form";
-        }*/
-
-
     @PostMapping("register")
     public String register(@Valid UserDTO userDTO, BindingResult result, Model model){
 
@@ -84,9 +73,14 @@ public class HomeController {
         }
 
         if(!userDTO.getPassword().equals(userDTO.getMatchingPassword())){
-            System.out.println("not the same password");
             result.addError(new FieldError("userDTO", "matchingPassword", "źle powtórzone hasło"));
-            //model.addAttribute("errors", result);
+            return "register";
+        }
+
+        if(userRepository.existsByUsername(userDTO.getUsername())) {
+
+            System.out.println(userRepository.existsByUsername(userDTO.getUsername()) + " " + userDTO.getUsername());
+            result.addError(new FieldError("userDTO", "username", "email jest już zajęty"));
             return "register";
         }
 
