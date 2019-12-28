@@ -1,12 +1,13 @@
 package pl.coderslab.charity.dto;
 
-import javax.validation.constraints.Email;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import lombok.Getter;
 import lombok.Setter;
+import pl.coderslab.charity.validation.ValidEmail;
 
 
 @Getter
@@ -15,7 +16,7 @@ public class UserDTO {
 
     @NotNull
     @NotEmpty
-    @Email(message = "niepoprawny adres email")
+    @ValidEmail
     private String username;
 
     @NotNull
