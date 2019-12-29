@@ -1,8 +1,7 @@
 package pl.coderslab.charity.controllers;
 
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +18,7 @@ import pl.coderslab.charity.repository.DonationRepository;
 import pl.coderslab.charity.repository.InstitutionRepository;
 import pl.coderslab.charity.repository.RoleRepository;
 import pl.coderslab.charity.repository.UserRepository;
+import pl.coderslab.charity.service.UserService;
 
 import javax.validation.Valid;
 import java.util.*;
@@ -27,16 +27,21 @@ import java.util.*;
 @Controller
 public class HomeController {
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     private final InstitutionRepository institutionRepository;
     private final DonationRepository donationRepository;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final UserService userService;
 
-    public HomeController(InstitutionRepository institutionRepository, DonationRepository donationRepository, UserRepository userRepository, RoleRepository roleRepository) {
+    public HomeController(InstitutionRepository institutionRepository, DonationRepository donationRepository, UserRepository userRepository, RoleRepository roleRepository, UserService userService) {
         this.institutionRepository = institutionRepository;
         this.donationRepository = donationRepository;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.userService = userService;
     }
 
     @RequestMapping("/")
@@ -92,14 +97,59 @@ public class HomeController {
         System.out.println("before save user");
 
         User user = new User();
-        user.setPassword(userDTO.getPassword());
+        user.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
         user.setUsername(userDTO.getUsername());
 
-        Role roleUser = roleRepository.findByRole("ROLE_USER");
+
+
+        Optional<Role> role = roleRepository.findById(2L);
+
+
+        /*    private String saveTrim(final Optional<String> input) {
+        if(input.isPresent()) {
+            return input.get().trim();
+        }
+
+        return "";
+    }*/
+
+    /*        Optional<Product> getValueBy(final String id) {
+            if (StringUtils.isBlank(id)) {
+                return Optional.empty();
+            }
+            return Optional.ofNullable(readFromDB(id));
+        }*/
+
+        if(role.isEmpty()){
+            role = null;
+        }
+
+        HashSet<Optional<Role>> roles = new HashSet<>();
+
+
+
+
+
+        roles.add(role);
+        user.setRoles(roles);
+
+
+
+/*        public Collection<? extends GrantedAuthority> getAuthorities() {
+
+            return user.getRoles().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRole()))
+                    .collect(Collectors.toList());
+        }*/
+
+        /*Role roleUser = roleRepository.findByRole("USER");
+
+        System.out.println(roleUser.toString());
 
         Set<Role> roles = new HashSet<Role>();
         roles.add(roleUser);
-        user.setRoles(roles);
+        user.setRoles(roles);*/
+
+        //userRepository.save(user);
 
         userRepository.save(user);
 
